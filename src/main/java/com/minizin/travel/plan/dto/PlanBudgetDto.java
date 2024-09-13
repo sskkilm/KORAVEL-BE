@@ -2,9 +2,10 @@ package com.minizin.travel.plan.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.minizin.travel.plan.entity.PlanBudget;
 import lombok.*;
 
-@Data
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,6 +16,10 @@ public class PlanBudgetDto {
 
     private int cost;
 
-    private String budgetMemo;
-
+    public static PlanBudgetDto toDto(PlanBudget budget) {
+        return PlanBudgetDto.builder()
+                .budgetCategory(budget.getBudgetCategory())
+                .cost(budget.getCost())
+                .build();
+    }
 }
